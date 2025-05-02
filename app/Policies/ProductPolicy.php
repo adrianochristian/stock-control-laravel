@@ -25,7 +25,7 @@ class ProductPolicy
      */
     public function viewAny(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductPolicy
      */
     public function view(): bool
     {
-        return false;
+        return true;
     }
 
     /**

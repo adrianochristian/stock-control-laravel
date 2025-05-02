@@ -23,5 +23,7 @@ class Product extends Model
     protected $casts = [
         'price' => Money::class,
         'quantity' => 'integer',
+        'created_at' => 'datetime:d/m/Y H:i:s',
+        'updated_at' => 'datetime:d/m/Y H:i:s',
     ];
 }
