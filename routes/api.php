@@ -15,6 +15,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::prefix('user')->controller(UserController::class)->middleware('throttle:60,1')->group(function () {
             Route::get('/{user}', 'show')->name('user.show');
+            Route::get('/me/info', 'me')->name('user.me');
         });
 
         Route::prefix('products')->controller(ProductController::class)->middleware('throttle:60,1')->group(function () {
