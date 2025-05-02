@@ -177,6 +177,10 @@ export default function ProductForm({ mode, product, onSuccess }: ProductFormPro
     }
   }
 
+  const convertToCents = (price: number): number => {
+    return Math.round(price * 100);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrors({})
@@ -184,13 +188,19 @@ export default function ProductForm({ mode, product, onSuccess }: ProductFormPro
 
     try {
       const token = localStorage.getItem('jwt')
+
+      const formData = {
+        ...form,
+        price: convertToCents(Number(form.price))
+      };
+
       if (mode === 'create') {
-        await axios.post('/api/v1/products', form, {
+        await axios.post('/api/v1/products', formData, {
           headers: { Authorization: `Bearer ${token}` },
         })
         showToast('Produto criado com sucesso!', 'success')
       } else if (mode === 'edit' && product) {
-        await axios.put(`/api/v1/products/${product.id}`, form, {
+        await axios.put(`/api/v1/products/${product.id}`, formData, {
           headers: { Authorization: `Bearer ${token}` },
         })
         showToast('Produto atualizado com sucesso!', 'success')

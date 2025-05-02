@@ -15,12 +15,14 @@ interface Product {
 }
 
 interface PageProps {
-  product: Product
+  product: {
+    data: Product
+  }
 }
 
 export default function EditProduct() {
   const { props } = usePage<PageProps>()
-  const { product } = props
+  const product = props.product.data
 
   return (
     <AppLayout title={`Editar Produto`}>
