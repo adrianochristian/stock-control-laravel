@@ -1,6 +1,10 @@
 # Sistema de Controle de Estoque
 
-Esta aplicação Laravel oferece um sistema de controle de estoque para gerenciar inventário de forma eficiente.
+## Demonstração
+
+[![Demonstração do Sistema de Controle de Estoque](https://i.vimeocdn.com/video/placeholder_640.jpg)](https://vimeo.com/1080826842/fc219e6467?share=copy "Demonstração do Sistema de Controle de Estoque")
+
+Clique no link acima para assistir à demonstração do sistema.
 
 ## Pré-requisitos
 
