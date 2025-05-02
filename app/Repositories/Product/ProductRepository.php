@@ -22,16 +22,18 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             $query->where('name', 'like', '%'.$filters['name'].'%');
         }
 
-        if (! empty($filters['category'])) {
-            $query->where('category', $filters['category']);
+        if (isset($filters['category']) && $filters['category'] !== '') {
+            $query->where('category', 'like', '%' . $filters['category'] . '%');
         }
 
         if (! empty($filters['price_min'])) {
-            $query->where('price', '>=', $filters['price_min']);
+            $priceInCents = (int)($filters['price_min'] * 100);
+            $query->where('price', '>=', $priceInCents);
         }
-
+        
         if (! empty($filters['price_max'])) {
-            $query->where('price', '<=', $filters['price_max']);
+            $priceInCents = (int)($filters['price_max'] * 100);
+            $query->where('price', '<=', $priceInCents);
         }
 
         return $query->orderBy('name')->paginate($perPage);
