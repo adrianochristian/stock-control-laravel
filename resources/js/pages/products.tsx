@@ -387,7 +387,7 @@ export default function Products() {
 
         return (
             <ProductActions>
-                {(isAdmin || isOperator) && (
+                {(isAdmin) && (
                     <ActionButton
                         variant="secondary"
                         onClick={() => window.location.href = `/products/edit/${product.id}`}
